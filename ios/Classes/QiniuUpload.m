@@ -107,7 +107,7 @@
     
     NSString *base64 = [temp substringWithRange:NSMakeRange(rangeSecond.location + 1, temp.length - rangeSecond.location - 1)];
     NSString *str = [self dencode:base64];
-    if([str isEqualToString:@""]){
+    if(str == nil || [str isEqualToString:@""]){
         return NO;
     }
     

@@ -14,16 +14,18 @@ class FlutterQiNiuConfig {
   String key;
   String filePath;
 
-  FlutterQiNiuConfig({
+  FlutterQiNiuConfig(
     this.token,
+    this.filePath, {
     this.key,
-    this.filePath,
   });
+
   FlutterQiNiuConfig.fromJson(Map<String, dynamic> json) {
     token = json["token"]?.toString();
     key = json["key"]?.toString();
     filePath = json["filePath"]?.toString();
   }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data["token"] = token;

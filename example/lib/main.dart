@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_qiniu/flutter_qiniu.dart';
 import 'package:flutter_qiniu/flutter_qiniu_config.dart';
 import 'dart:io';
+import 'dart:convert' as convert;
 
 void main() {
   runApp(MyApp());
@@ -25,6 +26,7 @@ class _MyAppState extends State<MyApp> {
   File _image;
   String _filePath;
   final picker = ImagePicker();
+  String _uploadResultString = '';
 
   Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
@@ -64,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text('上传图片'),
                 onPressed: () async {
                   FlutterQiNiuConfig config = FlutterQiNiuConfig(
-                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:jCN3Ooy5m1dWYh-lnYwZNvWbJpw=:eyJkZWFkbGluZSI6MTU5NTUwNjA0MiwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL3h4cS5hdmF0YXIueGlhb2VuYWkuY29tL1wiLCBcImtleVwiOiAkKGtleSksIFwid2lkdGhcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhlaWdodFwiOiAkKGltYWdlSW5mby5oZWlnaHQpfSIsInNhdmVLZXkiOiIkKGV0YWcpJChleHQpIiwic2NvcGUiOiJ4aWFveGlucWluZy1hdmF0YXIifQ==',
+                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:EJ47gik8KpjcP7favfZRY-wf9Nk=:eyJkZWFkbGluZSI6MTU5NTUxNDQ5MiwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL3h4cS5hdmF0YXIueGlhb2VuYWkuY29tL1wiLCBcImtleVwiOiAkKGtleSksIFwid2lkdGhcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhlaWdodFwiOiAkKGltYWdlSW5mby5oZWlnaHQpfSIsInNhdmVLZXkiOiIkKGV0YWcpJChleHQpIiwic2NvcGUiOiJ4aWFveGlucWluZy1hdmF0YXIifQ==',
                       filePath: _filePath);
 
 
@@ -74,9 +76,15 @@ class _MyAppState extends State<MyApp> {
 
                   print('flutter 结果:$result');
 
+                  _uploadResultString = convert.jsonEncode(result);
+
+                  setState(() {
+
+                  });
+
                 },
               ),
-              Text('ssss'),
+              Text(_uploadResultString),
 
             ],
           ),
