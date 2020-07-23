@@ -27,25 +27,17 @@ class FlutterQiNiu {
       String result = await _channel.invokeMethod('upload', args);
       Map map = convert.jsonDecode(result);
 
-      _progress = null;
       return Future.value(map);
     } catch (e) {
-      _progress = null;
       return Future.error(e);
     }
   }
 
   static Future<dynamic> _handler(MethodCall call) async {
-    print('--------ssss----${call.method}-----ssss---------');
     if (call.method == 'progress') {
-      print('--------ssss----${call.arguments}-----ssss---------');
       Map args = convert.jsonDecode(call.arguments);
-      print('--------ssss----$args---${_progress}--ssss---------');
-      if (_progress != null &&
-          args['key'] is String &&
-          args['persent'] is double) {
-        print('---------ssss---------');
-        _progress(args['key'], args['persent']);
+      if (_progress != null) {
+        _progress(args['key'],args['percent']);
       }
       return '';
     }

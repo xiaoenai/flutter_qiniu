@@ -32,13 +32,11 @@
         QiniuUploadOption *option = [[QiniuUploadOption alloc]init];
         __weak typeof(self) weakSelf = self;
         [option setProgress:^(NSString * _Nonnull key, float percent) {
-            NSLog(@"上传进度:%f",percent);
             [weakSelf progress:key percent:percent];
         }];
         
         
         [[QiniuUpload shared] uploadConfig:config option:option complete:^(NSDictionary * _Nonnull res) {
-            NSLog(@"上传结果:====%@",res);
             NSString *str = [self dictionaryToJson:res];
             result(str);
         }];

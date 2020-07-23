@@ -64,16 +64,20 @@ class _MyAppState extends State<MyApp> {
                 child: Text('上传图片'),
                 onPressed: () async {
                   FlutterQiNiuConfig config = FlutterQiNiuConfig(
-                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:xehpsYruWjN-2v_HfoQQEh2pPTA=:eyJkZWFkbGluZSI6MTU5NTUwMzY4NCwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL3h4cS5hdmF0YXIueGlhb2VuYWkuY29tL1wiLCBcImtleVwiOiAkKGtleSksIFwid2lkdGhcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhlaWdodFwiOiAkKGltYWdlSW5mby5oZWlnaHQpfSIsInNhdmVLZXkiOiIkKGV0YWcpJChleHQpIiwic2NvcGUiOiJ4aWFveGlucWluZy1hdmF0YXIifQ==',
+                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:jCN3Ooy5m1dWYh-lnYwZNvWbJpw=:eyJkZWFkbGluZSI6MTU5NTUwNjA0MiwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL3h4cS5hdmF0YXIueGlhb2VuYWkuY29tL1wiLCBcImtleVwiOiAkKGtleSksIFwid2lkdGhcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhlaWdodFwiOiAkKGltYWdlSW5mby5oZWlnaHQpfSIsInNhdmVLZXkiOiIkKGV0YWcpJChleHQpIiwic2NvcGUiOiJ4aWFveGlucWluZy1hdmF0YXIifQ==',
                       filePath: _filePath);
 
 
-//                  FlutterQiNiu.upload
+                  var result = await FlutterQiNiu.upload(config,(key,percent){
+                    print('---上传进度:$key--$percent--------');
+                  });
 
-//                  print('flutter 结果:$result');
+                  print('flutter 结果:$result');
+
                 },
               ),
               Text('ssss'),
+
             ],
           ),
         ),
