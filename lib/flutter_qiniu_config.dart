@@ -14,9 +14,9 @@ class FlutterQiNiuConfig {
   String key;
   String filePath;
 
-  FlutterQiNiuConfig(
+  FlutterQiNiuConfig({
     this.token,
-    this.filePath, {
+    this.filePath,
     this.key,
   });
 

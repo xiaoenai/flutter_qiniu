@@ -15,7 +15,7 @@ import org.json.JSONObject;
  * @author karma
  * @date 2020/7/24
  */
-public final class QiNiuSdkManager {
+public class QiNiuSdkManager {
     private static final String TAG = "QiNiuSdkManager";
     private static volatile QiNiuSdkManager mIstance;
     private UploadManager uploadManager;
@@ -32,16 +32,17 @@ public final class QiNiuSdkManager {
     }
 
     public void initConfig() {
-        //config配置上传参数
-        Configuration configuration = new Configuration.Builder()
-                .connectTimeout(10)
-                .responseTimeout(60).build();
         if (uploadManager == null) {
+            //config配置上传参数
+            Configuration configuration = new Configuration.Builder()
+                    .connectTimeout(10)
+                    .responseTimeout(60).build();
             uploadManager = new UploadManager(configuration, 3);
         }
     }
 
     public void upLoadImage(String filePath, String key, String token, final UploadInterface uploadInterface) {
+        Log.d(TAG, "upLoadImage: filePath=" + filePath + "\r\n key=" + key + "\r\n token=" + token);
         if (uploadManager != null) {
             uploadManager.put(filePath, key, token, new UpCompletionHandler() {
                 @Override
