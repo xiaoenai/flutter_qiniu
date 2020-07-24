@@ -48,7 +48,7 @@ public class QiNiuSdkManager {
                 @Override
                 public void complete(String key, ResponseInfo info, JSONObject response) {
                     if (info.isOK()) {
-                        Log.d(TAG, "upload success");
+                        Log.d(TAG, "upload success" + response.toString());
                         if (uploadInterface != null) {
                             uploadInterface.uploadComplete(key, info, response);
                         }

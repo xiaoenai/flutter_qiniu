@@ -1,5 +1,6 @@
 package com.example.flutter_qiniu
 
+import android.util.Log
 import androidx.annotation.NonNull;
 import com.example.flutter_qiniu.QiNiuSdkManager.UploadInterface
 import com.qiniu.android.http.ResponseInfo
@@ -21,7 +22,7 @@ public class FlutterQiniuPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_qiniu")
+        channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "plugins.xiaoenai.com/flutter_qiniu")
         channel.setMethodCallHandler(this);
     }
 
@@ -57,6 +58,8 @@ public class FlutterQiniuPlugin : FlutterPlugin, MethodCallHandler {
                 override fun uploadComplete(key: String?, info: ResponseInfo?, response: JSONObject?) {
                     var successData = JSONObject()
                     successData.put("success", true)
+                    successData.put("base_url", response!!.get("base_url"))
+                    successData.put("key", response!!.getString("key"))
                     result.success(successData.toString())
                 }
 
@@ -64,7 +67,7 @@ public class FlutterQiniuPlugin : FlutterPlugin, MethodCallHandler {
                     var successData = JSONObject()
                     successData.put("success", false)
                     successData.put("info", info)
-                    successData.put("response", response)
+                    successData.put("error", response)
                     result.success(successData.toString())
                 }
 
@@ -81,7 +84,7 @@ public class FlutterQiniuPlugin : FlutterPlugin, MethodCallHandler {
         var result = JSONObject()
         result.put("key", key)
         result.put("percent", percent)
-        qiniuChannel?.invokeMethod("progress", result.toString())
+        channel.invokeMethod("progress", result.toString())
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
