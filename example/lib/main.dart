@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                 child: Text('上传图片'),
                 onPressed: () async {
                   FlutterQiNiuConfig config = FlutterQiNiuConfig(
-                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:hGGp0ZsXnoiKubMPfx8GpLOVG6k=:eyJkZWFkbGluZSI6MTU5NTU4OTY2NSwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL3h4cS5hdmF0YXIueGlhb2VuYWkuY29tL1wiLCBcImtleVwiOiAkKGtleSksIFwid2lkdGhcIjogJChpbWFnZUluZm8ud2lkdGgpLCBcImhlaWdodFwiOiAkKGltYWdlSW5mby5oZWlnaHQpfSIsInNhdmVLZXkiOiIkKGV0YWcpJChleHQpIiwic2NvcGUiOiJ4aWFveGlucWluZy1hdmF0YXIifQ==',
+                      token: 'fG4R4vdljfy24rzGLro27S51VFLsCEO7WZay23fM:PNJ2JqCrkDG4TBNSCYkPNLPQrE0=:eyJkZWFkbGluZSI6MTU5NjU0NDM3NCwibWltZUxpbWl0IjoiaW1hZ2UvKiIsInJldHVybkJvZHkiOiJ7XCJiYXNlX3VybFwiOlwiaHR0cDovL2F2YXRhci54aWFveGlucWluZy5jb20vXCIsIFwia2V5XCI6ICQoa2V5KSwgXCJ3aWR0aFwiOiAkKGltYWdlSW5mby53aWR0aCksIFwiaGVpZ2h0XCI6ICQoaW1hZ2VJbmZvLmhlaWdodCl9Iiwic2F2ZUtleSI6IiQoZXRhZykkKGV4dCkiLCJzY29wZSI6InhpYW94aW5xaW5nLWF2YXRhciJ9',
                       filePath: _filePath);
                   var result = await FlutterQiNiu.upload(config,(key,percent){
                     print('---上传进度:$key--$percent--------');

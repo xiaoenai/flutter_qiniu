@@ -44,7 +44,7 @@ public class QiNiuSdkManager {
     public void upLoadImage(String filePath, String key, String token, final UploadInterface uploadInterface) {
         Log.d(TAG, "upLoadImage: filePath=" + filePath + "\r\n key=" + key + "\r\n token=" + token);
         if (uploadManager != null) {
-            uploadManager.put(filePath, key, token, new UpCompletionHandler() {
+            uploadManager.put(filePath, null, token, new UpCompletionHandler() {
                 @Override
                 public void complete(String key, ResponseInfo info, JSONObject response) {
                     if (info.isOK()) {
